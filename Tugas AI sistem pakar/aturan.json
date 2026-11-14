@@ -1,0 +1,202 @@
+
+{
+    "judul": "Sistem Pakar Rekomendasi Style Fashion",
+
+    "sumber": {
+        "S1": "https://help.getwardrobe.com/latest/items/outfit-principles-style/",
+        "S2": "https://fitinline.com/article/read/macam-macam-style-fashion-dan-perkembangannya"
+    },
+
+    "batas_keberlakuan": "Sistem ini menggunakan pengetahuan mengenai karakteristik style fashion dari sumber GetWardrobe dan Fitinline. Rekomendasi hanya berlaku untuk tujuh kategori style, yaitu Minimalist, Casual, Streetwear, Vintage, Korean Style, Elegant, dan Sporty. Hasil ditentukan berdasarkan jawaban pengguna terhadap 14 pertanyaan mengenai pakaian dan aksesoris. Rekomendasi yang diberikan merupakan saran untuk membantu mengenali kecenderungan style fashion, bukan keputusan mutlak mengenai gaya berpakaian seseorang.",
+
+    "aturan": [
+        {
+            "id": "R1",
+            "jika": ["jawaban_1_ya"],
+            "mode": "dan",
+            "maka": "pakaian_minimalis",
+            "style": "Minimalist",
+            "sumber": ["S1"]
+        },
+        {
+            "id": "R2",
+            "jika": ["jawaban_2_ya"],
+            "mode": "dan",
+            "maka": "aksesoris_minimalis",
+            "style": "Minimalist",
+            "sumber": ["S1"]
+        },
+        {
+            "id": "R3",
+            "jika": ["pakaian_minimalis", "aksesoris_minimalis"],
+            "mode": "dan",
+            "maka": "Minimalist",
+            "style": "Minimalist",
+            "jenis": "kesimpulan",
+            "penjelasan": "Kamu cenderung menyukai pakaian sederhana dengan warna netral dan aksesoris yang tidak berlebihan.",
+            "sumber": ["S1"]
+        },
+
+        {
+            "id": "R4",
+            "jika": ["jawaban_3_ya"],
+            "mode": "dan",
+            "maka": "pakaian_casual",
+            "style": "Casual",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R5",
+            "jika": ["jawaban_4_ya"],
+            "mode": "dan",
+            "maka": "aksesoris_casual",
+            "style": "Casual",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R6",
+            "jika": ["pakaian_casual", "aksesoris_casual"],
+            "mode": "dan",
+            "maka": "Casual",
+            "style": "Casual",
+            "jenis": "kesimpulan",
+            "penjelasan": "Kamu cenderung menyukai pakaian nyaman untuk sehari-hari dengan aksesoris yang praktis.",
+            "sumber": ["S2"]
+        },
+
+        {
+            "id": "R7",
+            "jika": ["jawaban_5_ya"],
+            "mode": "dan",
+            "maka": "pakaian_streetwear",
+            "style": "Streetwear",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R8",
+            "jika": ["jawaban_6_ya"],
+            "mode": "dan",
+            "maka": "aksesoris_streetwear",
+            "style": "Streetwear",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R9",
+            "jika": ["pakaian_streetwear", "aksesoris_streetwear"],
+            "mode": "dan",
+            "maka": "Streetwear",
+            "style": "Streetwear",
+            "jenis": "kesimpulan",
+            "penjelasan": "Kamu cenderung menyukai pakaian oversized dengan desain mencolok serta aksesoris bergaya urban.",
+            "sumber": ["S2"]
+        },
+
+        {
+            "id": "R10",
+            "jika": ["jawaban_7_ya"],
+            "mode": "dan",
+            "maka": "pakaian_vintage",
+            "style": "Vintage",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R11",
+            "jika": ["jawaban_8_ya"],
+            "mode": "dan",
+            "maka": "aksesoris_vintage",
+            "style": "Vintage",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R12",
+            "jika": ["pakaian_vintage", "aksesoris_vintage"],
+            "mode": "dan",
+            "maka": "Vintage",
+            "style": "Vintage",
+            "jenis": "kesimpulan",
+            "penjelasan": "Kamu cenderung menyukai pakaian klasik bernuansa retro dengan aksesoris bergaya zaman dahulu.",
+            "sumber": ["S2"]
+        },
+
+        {
+            "id": "R13",
+            "jika": ["jawaban_9_ya"],
+            "mode": "dan",
+            "maka": "pakaian_korean",
+            "style": "Korean Style",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R14",
+            "jika": ["jawaban_10_ya"],
+            "mode": "dan",
+            "maka": "aksesoris_korean",
+            "style": "Korean Style",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R15",
+            "jika": ["pakaian_korean", "aksesoris_korean"],
+            "mode": "dan",
+            "maka": "Korean Style",
+            "style": "Korean Style",
+            "jenis": "kesimpulan",
+            "penjelasan": "Kamu cenderung menyukai outfit yang rapi, serasi, dan dilengkapi aksesoris sederhana.",
+            "sumber": ["S2"]
+        },
+
+        {
+            "id": "R16",
+            "jika": ["jawaban_11_ya"],
+            "mode": "dan",
+            "maka": "pakaian_elegant",
+            "style": "Elegant",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R17",
+            "jika": ["jawaban_12_ya"],
+            "mode": "dan",
+            "maka": "aksesoris_elegant",
+            "style": "Elegant",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R18",
+            "jika": ["pakaian_elegant", "aksesoris_elegant"],
+            "mode": "dan",
+            "maka": "Elegant",
+            "style": "Elegant",
+            "jenis": "kesimpulan",
+            "penjelasan": "Kamu cenderung menyukai pakaian berpotongan rapi dan berkelas dengan aksesoris yang elegan.",
+            "sumber": ["S2"]
+        },
+
+        {
+            "id": "R19",
+            "jika": ["jawaban_13_ya"],
+            "mode": "dan",
+            "maka": "pakaian_sporty",
+            "style": "Sporty",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R20",
+            "jika": ["jawaban_14_ya"],
+            "mode": "dan",
+            "maka": "aksesoris_sporty",
+            "style": "Sporty",
+            "sumber": ["S2"]
+        },
+        {
+            "id": "R21",
+            "jika": ["pakaian_sporty", "aksesoris_sporty"],
+            "mode": "dan",
+            "maka": "Sporty",
+            "style": "Sporty",
+            "jenis": "kesimpulan",
+            "penjelasan": "Kamu cenderung menyukai pakaian bergaya atletik dengan aksesoris yang mendukung aktivitas.",
+            "sumber": ["S2"]
+        }
+    ]
+}
