@@ -1,7 +1,4 @@
-
 import json
-
-# Membaca knowledge base
 with open("aturan.json", "r", encoding="utf-8") as file:
     knowledge = json.load(file)
 
@@ -9,11 +6,9 @@ print("=" * 45)
 print(knowledge["judul"])
 print("=" * 45)
 
-# Menampilkan batas sistem
 print("\nBatas Sistem:")
 print(knowledge["batas_keberlakuan"])
 
-# Daftar pertanyaan
 pertanyaan = {
     "1": "Apakah kamu menyukai pakaian dengan potongan sederhana, minim motif, dan warna netral?",
     "2": "Apakah kamu lebih menyukai aksesoris sederhana seperti jam tangan polos, kalung tipis, atau tas tanpa banyak hiasan?",
@@ -37,7 +32,6 @@ pertanyaan = {
     "14": "Apakah kamu menyukai aksesoris seperti topi olahraga, smartwatch, atau tas ransel sporty?"
 }
 
-# Mengumpulkan fakta dari pengguna
 fakta_user = set()
 
 print("\n=== PERTANYAAN REKOMENDASI ===")
@@ -55,8 +49,6 @@ for kode, teks in pertanyaan.items():
         else:
             print("Masukkan y atau n!")
 
-
-# Proses Forward Chaining
 fakta = set(fakta_user)
 aturan_terpakai = []
 aturan_diproses = set()
@@ -78,30 +70,21 @@ while True:
             cocok = any(item in fakta_sebelumnya for item in kondisi)
         else:
             cocok = False
-
         if cocok:
             aturan_baru.append(aturan)
-
     if not aturan_baru:
         break
-
     for aturan in aturan_baru:
         fakta.add(aturan["maka"])
         aturan_diproses.add(aturan["id"])
         aturan_terpakai.append(aturan)
 
-
-# Mengambil hasil kesimpulan
 hasil = [
     aturan for aturan in aturan_terpakai
     if aturan.get("jenis") == "kesimpulan"
 ]
-
-# Maksimal dua rekomendasi
 hasil = hasil[:2]
 
-
-# Menampilkan hasil rekomendasi
 print("\n" + "=" * 45)
 print("=== HASIL REKOMENDASI STYLE ===")
 print("=" * 45)
@@ -110,18 +93,14 @@ if hasil:
     for nomor, aturan in enumerate(hasil, start=1):
         print(f"\n{nomor}. {aturan['style']}")
 
-        # Menampilkan aturan aktif
         print("\nAturan aktif:")
 
         for aturan_aktif in aturan_terpakai:
             if aturan_aktif["style"] == aturan["style"]:
                 print(f"- {aturan_aktif['id']}")
-
-        # Menampilkan kesimpulan dan penjelasan
+                
         print(f"\nKesimpulan: {aturan['style']}")
         print("Penjelasan:", aturan["penjelasan"])
-
-        # Menampilkan referensi
         print("\nReferensi:")
 
         kode_sumber = aturan["sumber"]
@@ -133,9 +112,6 @@ if hasil:
             print(f"- {kode}: {knowledge['sumber'][kode]}")
 
         print("-" * 45)
-
 else:
     print("\nStyle belum dapat ditentukan.")
-
-
 print("\n=== REKOMENDASI SELESAI ===")
